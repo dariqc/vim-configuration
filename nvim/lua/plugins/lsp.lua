@@ -3,7 +3,7 @@
 --
 -- Flow: mason installs the server binaries -> mason-lspconfig auto-enables
 -- them via vim.lsp.enable() (nvim 0.11 API) -> nvim-lspconfig ships the
--- per-server defaults -> we attach completion capabilities + keymaps.
+-- per-server defaults -> we attach default capabilities + keymaps.
 return {
     -- Installs LSP servers / formatters / linters
     {
@@ -38,19 +38,14 @@ return {
         end,
     },
 
-    -- nvim-lspconfig provides the server configs; here we wire completion
+    -- nvim-lspconfig provides the server configs; here we wire default
     -- capabilities into every server and set buffer-local LSP keymaps.
     {
         "neovim/nvim-lspconfig",
         lazy = false,
-        dependencies = { "hrsh7th/cmp-nvim-lsp" },
         config = function()
-            -- Advertise nvim-cmp's completion capabilities to all servers.
+            -- Advertise the default client capabilities to all servers.
             local caps = vim.lsp.protocol.make_client_capabilities()
-            local ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-            if ok then
-                caps = vim.tbl_deep_extend("force", caps, cmp_lsp.default_capabilities())
-            end
             vim.lsp.config("*", { capabilities = caps })
 
             -- Buffer-local keymaps, applied when any server attaches.
