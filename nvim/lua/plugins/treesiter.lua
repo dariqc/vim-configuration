@@ -3,8 +3,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
-            local configs = require("nvim-treesitter.configs")
-            configs.setup({
+            require("nvim-treesitter.configs").setup({
                 -- enable syntax highlighting
                 highlight = {
                     enable = true,
@@ -16,7 +15,14 @@ return {
                 -- ensure these language parsers are installed
                 ensure_installed = {
                     "json",
+                    "jsonc",
                     "javascript",
+                    "typescript",
+                    "tsx",
+                    "ruby",
+                    "yaml",
+                    "markdown",
+                    "markdown_inline",
                     "query",
                     "bash",
                     "lua",
@@ -29,7 +35,7 @@ return {
                 -- auto install above language parsers
                 auto_install = false,
             })
-        end
+        end,
     }
 }
 

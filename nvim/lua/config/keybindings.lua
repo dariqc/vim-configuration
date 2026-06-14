@@ -32,13 +32,28 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- yank into clipboard even if on ssh
-vim.keymap.set('n', '<leader>y', '<Plug>OSCYankOperator')
-vim.keymap.set('v', '<leader>y', '<Plug>OSCYankVisual')
+-- NOTE: disabled - depends on vim-oscyank which is not installed.
+-- vim.keymap.set('n', '<leader>y', '<Plug>OSCYankOperator')
+-- vim.keymap.set('v', '<leader>y', '<Plug>OSCYankVisual')
 
 -- reload without exiting vim
 vim.keymap.set("n", "<leader>rl", "<cmd>source ~/.config/nvim/init.lua<cr>")
 
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+-- NOTE: disabled - depends on undotree which is not installed.
+-- vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+-- shortcut for diagnostic window --
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+
+-- NvimTree shortcuts
+vim.keymap.set('n', '<leader>nf', '<Cmd>NvimTreeFindFile<CR>', { desc = 'Open current file in nvim tree' })
+
+-- Shortcut for buffer
+vim.keymap.set('n', '<leader>bb', '<Cmd>Bufferin<CR>', { desc = 'Pick a buffer' })
+
+-- Shortcut for FzfLua
+vim.keymap.set('n', '<leader>zg', '<Cmd>FzfLua live_grep<CR>', { desc = 'Open live grep in FzfLua' })
+vim.keymap.set('n', '<leader>zf', '<Cmd>FzfLua files<CR>', { desc = 'Open files in FzfLua' })
 
 -- source file
 vim.keymap.set("n", "<leader><leader>", function()

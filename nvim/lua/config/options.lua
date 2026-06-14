@@ -26,7 +26,7 @@ set.signcolumn = "yes"
 set.cursorline = true
 
 -- 80th column
-set.colorcolumn = "80"
+set.colorcolumn = "100"
 
 -- clipboard
 set.clipboard:append("unnamedplus")
@@ -55,3 +55,12 @@ set.incsearch = true
 
 -- faster cursor hold
 set.updatetime = 50
+
+-- show diagnostics
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert=false,
+    severity_sort=false
+})
